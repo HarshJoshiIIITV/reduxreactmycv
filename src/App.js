@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
+import React,{Component} from 'react';
 import './App.css';
+import Navbar from './components/Navbar';
+import {BrowserRouter,Route,Switch} from 'react-router-dom';
+import About from './components/About';
+import Projects from './components/Projects';
+import Contact from './components/Contact';
+import Academics from './components/Academics';
+import Cv from './components/Cv';
+import Post from './components/Post';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render(){
+    return (
+      <BrowserRouter>
+      <div className="App">
+          <Navbar />
+          <Switch>
+          <Route exact path="/" component={About} />
+          <Route path="/about" component={About} />
+          <Route path="/cv" component={Cv} />
+          <Route path="/academics" component={Academics} />
+          <Route path="/projects" component={Projects} />
+          <Route path="/contact" component={Contact} />
+          <Route path="/:post_id" component={Post} />
+          </Switch>
+      </div>
+      </BrowserRouter>
+    );
+}
 }
 
 export default App;
